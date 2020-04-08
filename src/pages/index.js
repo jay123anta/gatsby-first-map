@@ -48,11 +48,12 @@ const IndexPage = () => {
       type: 'FeatureCollection',
       features: data.map((country = {}) => {
         const { countryInfo = {} } = country;
-        const { lat, long: lng } = countryInfo;
+        const { flag, lat, long: lng } = countryInfo;
         return {
           type: 'Feature',
           properties: {
             ...country,
+            flag,
           },
           geometry: {
             type: 'Point',
@@ -75,8 +76,9 @@ const IndexPage = () => {
           deaths,
           recovered
         } = properties
-    
+        
         casesString = `${cases}`;
+        
     
         if ( cases > 1000 ) {
           casesString = `${casesString.slice(0, -3)}k+`
@@ -88,8 +90,9 @@ const IndexPage = () => {
     
         const html = `
           <span class= "icon-marker">
+          <span><img height="20px" src=${properties.flag} /></span>
             <span class="icon-marker-tooltip">
-              <h2>${country}</h2>
+              <h2>${country}</h2><span><img height="20px" src=${properties.flag} /></span>
               <ul>
                 <li><strong>Confirmed:</strong> ${cases}</li>
                 <li><strong>Deaths:</strong> ${deaths}</li>
@@ -97,12 +100,12 @@ const IndexPage = () => {
                 <li><strong>Last Update:</strong> ${updatedFormatted}</li>
               </ul>
             </span>
-            ${casesString}
+            <span> ${casesString} </span>
           </span>`;
     
         return L.marker( latlng, {
           icon: L.divIcon({
-            className: 'icon',
+            className: 'testicon',
             html
           }),
           riseOnHover: true
@@ -130,12 +133,8 @@ const IndexPage = () => {
       <Map {...mapSettings} />
 
       <Container type="content" className="text-center home-start">
-        <h2>Still Getting Started?</h2>
-        <p>Run the following in your terminal!</p>
-        <pre>
-          <code>gatsby new [directory] https://github.com/colbyfayock/gatsby-starter-leaflet</code>
-        </pre>
-        <p className="note">Note: Gatsby CLI required globally for the above command</p>
+        <h2>This is My First Attempt at Gatsby and Leaflet</h2>
+        <p>!!!</p>
       </Container>
     </Layout>
   );
