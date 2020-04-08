@@ -37,23 +37,28 @@
 
 .icon-marker {
 
-  display: flex;
-  position: relative;
+  display: inline-block;
+  position: absolute;
   justify-content: center;
+  text-align: center;
   align-items: center;
-  color: white;
-  width: 3.6em;
-  height: 3.6em;
-  font-size: .7em;
+  color: rgb(255, 0, 85);
+  padding-right: .5em; 
+  padding-top: .5em;
+  width: 4em;
+  height: 4em;
+  font-size: .8em;
   font-weight: bold;
-  background-color: $red-800;
-  border-radius: 100%;
-  box-shadow: 0 2px 5px rgba(black, .9);
+  //background-color: grey;
+  //border-radius: 100%;
+  //box-shadow: 0 2px 5px rgba(black, 1);
 
   &:hover {
 
     .icon-marker-tooltip {
       display: block;
+      text-align: left;
+      color: white;
     }
 
   }
